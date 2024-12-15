@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "695200015194",
+    "project_id": "micit-b0a5e",
+    "storage_bucket": "micit-b0a5e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695200015194:android:c1b79384069e1457d78963",
+        "android_client_info": {
+          "package_name": "com.micit.micit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "695200015194-dqnl4akccpkuh0e9it1el99e0tjtf774.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.micit.micit",
+            "certificate_hash": "1b92b9cbf73d653d632db20d16a4a14561fd58fb"
+          }
+        },
+        {
+          "client_id": "695200015194-das803cm5u8h1v1r7bihcm3hiihs43q9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAy0swpyJV45mWYth5iGnIeyDvI9epH3tE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "695200015194-das803cm5u8h1v1r7bihcm3hiihs43q9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "695200015194-5hconec0vqblsvdcimb75eege7nvkdhm.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.micit.micit"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -21,8 +21,6 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    log('languageCubit.local:${languageCubit.local}');
-
     return AppBar(
       title: Text(title),
       centerTitle: true,
@@ -32,7 +30,6 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
           onSelected: (value) {
             switch (value) {
               case 'darkMode':
-                log('message:${AdaptiveTheme.of(context).isDefault}');
                 AdaptiveTheme.of(context).toggleThemeMode(useSystem: false);
                 break;
               case 'changeLanguage':

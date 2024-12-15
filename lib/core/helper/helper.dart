@@ -5,7 +5,7 @@ import 'package:micit/core/router/route_names.dart';
 import 'package:micit/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../features/login_feature/data/models/user_model.dart';
+import '../../features/login_feature/data/models/user_auth_model.dart';
 
 class Helper {
   static String token = '';
@@ -61,7 +61,7 @@ class Helper {
   }
 
   /// Save User Model
-  static Future<bool> saveUserModel({required UserModel userModel}) async {
+  static Future<bool> saveUserModel({required UserAuthModel userModel}) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final userJson = json.encode(userModel.toJson());
     return await prefs.setString(userModelKey, userJson);
@@ -73,7 +73,7 @@ class Helper {
     final userJson = prefs.getString(userModelKey);
     if (userJson != null) {
       final Map<String, dynamic> userMap = json.decode(userJson);
-      return UserModel.fromJson(userMap);
+      return UserAuthModel.fromJson(userMap);
     } else {
       Helper.isLoggedIn = false;
       await Helper.saveUserLogged(false);

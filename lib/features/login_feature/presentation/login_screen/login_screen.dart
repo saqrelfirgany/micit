@@ -34,7 +34,6 @@ class LoginScreen extends StatelessWidget {
               );
             }
             if (state is AuthSuccess) {
-              log('state is AuthSuccess');
               context.push(AppRouteName.homeScreenRoute);
             }
           },

@@ -1,3 +1,3 @@
 class EndpointHelper {
-  static String filtersEndpoint = 'api/v4/filters';
+  static String usersEndpoint = 'https://reqres.in/api/users';
 }

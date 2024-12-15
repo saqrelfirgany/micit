@@ -11,8 +11,10 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../features/home_feature/presentation/cubit/home_cubit.dart'
+    as _i432;
 import '../../features/login_feature/presentation/cubit/login_cubit.dart'
-    as _i892;
+    as _i714;
 import '../cubit/language_cubit.dart' as _i731;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -27,7 +29,8 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     gh.singleton<_i731.LanguageCubit>(() => _i731.LanguageCubit());
-    gh.lazySingleton<_i892.AuthCubit>(() => _i892.AuthCubit());
+    gh.lazySingleton<_i432.HomeCubit>(() => _i432.HomeCubit());
+    gh.lazySingleton<_i714.AuthCubit>(() => _i714.AuthCubit());
     return this;
   }
 }

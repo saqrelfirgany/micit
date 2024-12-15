@@ -33,7 +33,7 @@ class CustomImageView extends StatelessWidget {
     this.radius,
     this.margin,
     this.border,
-    this.placeHolder = 'assets/logo.png',
+    this.placeHolder = 'assets/images/logo.png',
   });
 
   @override

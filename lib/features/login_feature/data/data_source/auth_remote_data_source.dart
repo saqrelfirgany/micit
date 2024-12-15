@@ -1,12 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../models/user_model.dart';
+import '../models/user_auth_model.dart';
 
 abstract class AuthRemoteDataSource {
-  Future<UserModel> signInWithGoogle();
+  Future<UserAuthModel> signInWithGoogle();
 
-  Future<UserModel> signInWithEmail(String email, String password);
+  Future<UserAuthModel> signInWithEmail(String email, String password);
 
   Future<void> logout();
 }
@@ -20,7 +20,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   AuthRemoteDataSourceImpl();
 
   @override
-  Future<UserModel> signInWithGoogle() async {
+  Future<UserAuthModel> signInWithGoogle() async {
     final googleUser = await googleSignIn.signIn();
     if (googleUser == null) throw Exception('Google Sign-In canceled.');
 
@@ -33,7 +33,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     final userCredential = await firebaseAuth.signInWithCredential(credential);
     final firebaseUser = userCredential.user!;
 
-    return UserModel(
+    return UserAuthModel(
       uid: firebaseUser.uid,
       displayName: firebaseUser.displayName ?? 'displayName',
       email: firebaseUser.email ?? 'email',
@@ -44,14 +44,14 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   }
 
   @override
-  Future<UserModel> signInWithEmail(String email, String password) async {
+  Future<UserAuthModel> signInWithEmail(String email, String password) async {
     final userCredential = await firebaseAuth.signInWithEmailAndPassword(
       email: email,
       password: password,
     );
     final firebaseUser = userCredential.user!;
 
-    return UserModel(
+    return UserAuthModel(
       uid: firebaseUser.uid,
       displayName: firebaseUser.displayName ?? 'displayName',
       email: firebaseUser.email ?? 'email',

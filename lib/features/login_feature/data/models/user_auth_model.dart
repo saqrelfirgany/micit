@@ -1,6 +1,6 @@
-import '../../domain/entity/user_entity.dart';
+import '../../domain/entity/user_auth_entity.dart';
 
-class UserModel {
+class UserAuthModel {
   final String displayName;
   final String email;
   final bool isEmailVerified;
@@ -11,7 +11,7 @@ class UserModel {
   final String? tenantId;
   final String uid;
 
-  UserModel({
+  UserAuthModel({
     required this.displayName,
     required this.email,
     required this.isEmailVerified,
@@ -23,8 +23,8 @@ class UserModel {
     required this.uid,
   });
 
-  factory UserModel.fromJson(Map<String, dynamic> json) {
-    return UserModel(
+  factory UserAuthModel.fromJson(Map<String, dynamic> json) {
+    return UserAuthModel(
       displayName: json['displayName'],
       email: json['email'],
       isEmailVerified: json['isEmailVerified'],
@@ -52,8 +52,8 @@ class UserModel {
   }
 
   // Convert Model to Entity
-  UserEntity toEntity() {
-    return UserEntity(
+  UserAuthEntity toEntity() {
+    return UserAuthEntity(
       uid: uid,
       displayName: displayName,
       email: email,

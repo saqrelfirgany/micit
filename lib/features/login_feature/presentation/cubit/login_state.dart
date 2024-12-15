@@ -6,7 +6,7 @@ abstract class AuthState {}
 class AuthInitial extends AuthState {}
 class AuthLoading extends AuthState {}
 class AuthSuccess extends AuthState {
-  final UserModel userModel;
+  final UserAuthModel userModel;
   AuthSuccess(this.userModel);
 }
 class AuthFailure extends AuthState {

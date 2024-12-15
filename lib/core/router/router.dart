@@ -2,7 +2,7 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:go_router/go_router.dart';
 import 'package:micit/core/router/route_names.dart';
 
-import '../../features/home_feature/home_screen/home_screen.dart';
+import '../../features/home_feature/presentation/home_screen/home_screen.dart';
 import '../../features/login_feature/presentation/login_screen/login_screen.dart';
 import '../../features/splash_feature/splash_screen/splash_screen.dart';
 import '../../main.dart';

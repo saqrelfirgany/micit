@@ -5,7 +5,7 @@ import 'package:injectable/injectable.dart';
 import 'package:micit/core/helper/helper.dart';
 import 'package:micit/features/login_feature/domain/use_case/sign_in_with_google_use_case.dart';
 
-import '../../data/models/user_model.dart';
+import '../../data/models/user_auth_model.dart';
 import '../../domain/use_case/logout_use_case.dart';
 
 part 'login_state.dart';
@@ -34,7 +34,7 @@ class AuthCubit extends Cubit<AuthState> {
   Future<void> getUser() async {
     final response = await Helper.getUserModel();
     if (response != null) {
-      final UserModel userModel = response;
+      final UserAuthModel userModel = response;
     }
   }
 

@@ -57,4 +57,34 @@ class UserRepositoryImpl implements UserRepository {
 
     return userEntityList;
   }
+
+  @override
+  Future<void> editUser(UserEntity user) async {
+    final userModel = UserModel(
+      id: user.id,
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      avatar: user.avatar,
+    );
+    await localDataSource.editUser(userModel);
+  }
+
+  @override
+  Future<void> addUser(UserEntity user) async {
+    final userModel = UserModel(
+      id: user.id,
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      avatar: user.avatar,
+    );
+    await localDataSource.addUser(userModel);
+  }
+
+  @override
+  Future<void> deleteUser(int userId) async {
+    await localDataSource.deleteUser(userId);
+  }
+
 }

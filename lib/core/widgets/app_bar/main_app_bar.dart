@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:micit/l10n/app_localizations.dart';
@@ -14,9 +12,11 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   MainAppBar({
     super.key,
     required this.title,
+    required this.leading,
   });
 
   final LanguageCubit languageCubit = serviceLocator<LanguageCubit>();
+  final Widget leading;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +25,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(title),
       centerTitle: true,
       automaticallyImplyLeading: false,
+      leading: leading,
       actions: [
         PopupMenuButton<String>(
           onSelected: (value) {

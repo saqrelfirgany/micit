@@ -1,32 +1,13 @@
 import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
 
 import '../models/user_model.dart';
+import 'database_helper.dart';
 
 class LocalDataSource {
-  Database? _database;
-
-  Future<Database> get database async {
-    if (_database != null) return _database!;
-    _database = await _initDatabase();
-    return _database!;
-  }
-
-  Future<Database> _initDatabase() async {
-    final path = await getDatabasesPath();
-    return openDatabase(
-      join(path, 'users.db'),
-      onCreate: (db, version) {
-        return db.execute(
-          'CREATE TABLE users(id INTEGER PRIMARY KEY, email TEXT, first_name TEXT, last_name TEXT, avatar TEXT)',
-        );
-      },
-      version: 1,
-    );
-  }
+  Future<Database> get _db async => await DatabaseHelper().database;
 
   Future<void> cacheUsers(List<UserModel> users) async {
-    final db = await database;
+    final db = await _db;
     await db.delete('users');
     for (var user in users) {
       await db.insert(
@@ -38,8 +19,36 @@ class LocalDataSource {
   }
 
   Future<List<UserModel>> getCachedUsers() async {
-    final db = await database;
+    final db = await _db;
     final users = await db.query('users');
     return users.map((json) => UserModel.fromJson(json)).toList();
+  }
+
+  Future<void> editUser(UserModel user) async {
+    final db = await _db;
+    await db.update(
+      'users',
+      user.toJson(),
+      where: 'id = ?',
+      whereArgs: [user.id],
+    );
+  }
+
+  Future<void> addUser(UserModel user) async {
+    final db = await _db;
+    await db.insert(
+      'users',
+      user.toJson(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+
+  Future<void> deleteUser(int userId) async {
+    final db = await _db;
+    await db.delete(
+      'users',
+      where: 'id = ?',
+      whereArgs: [userId],
+    );
   }
 }

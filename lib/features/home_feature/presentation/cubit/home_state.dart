@@ -9,7 +9,7 @@ class HomeLoading extends HomeState {}
 
 class HomeLoaded extends HomeState {
   final List<UserEntity> users;
-  HomeLoaded(this.users);
+  HomeLoaded({required this.users});
 }
 
 class HomeError extends HomeState {

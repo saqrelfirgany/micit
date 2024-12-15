@@ -3,8 +3,10 @@ import 'package:sqflite/sqflite.dart';
 import '../models/user_model.dart';
 import 'database_helper.dart';
 
+
 class LocalDataSource {
   Future<Database> get _db async => await DatabaseHelper().database;
+   static const String usersTableName = 'users';
 
   Future<void> cacheUsers(List<UserModel> users) async {
     final db = await _db;
@@ -50,5 +52,10 @@ class LocalDataSource {
       where: 'id = ?',
       whereArgs: [userId],
     );
+  }
+
+  Future<void> clearTable(String tableName) async {
+    final db = await _db;
+    await db.delete(tableName);
   }
 }

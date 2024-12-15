@@ -10,5 +10,6 @@ abstract class UserRepository {
   Future<void> editUser(UserEntity user);
   Future<void> addUser(UserEntity user);
   Future<void> deleteUser(int userId);
+  Future<void> clearCachedUsers();
 
 }

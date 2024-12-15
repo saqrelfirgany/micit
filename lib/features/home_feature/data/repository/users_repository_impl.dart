@@ -87,4 +87,8 @@ class UserRepositoryImpl implements UserRepository {
     await localDataSource.deleteUser(userId);
   }
 
+  @override
+  Future<void> clearCachedUsers() async {
+    await localDataSource.clearTable(LocalDataSource.usersTableName);
+  }
 }
